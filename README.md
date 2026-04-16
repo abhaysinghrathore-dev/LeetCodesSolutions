@@ -129,25 +129,54 @@ As you browse the codebase, you'll see comments. We enforce "Why" over "What".
 
 ---
 
-### 🚀 End-to-End Installation (The Non-Technical Guide)
-If you just want to run this application locally and see it work, follow these simple steps:
+### 🚀 End-to-End Installation Guides
 
-**Step 1: Get the Tools**
-* Download and install **Java 17+** (The engine for the backend).
-* Download and install **Node.js** (The engine for the frontend).
+We have provided two pathways to get FitCalorie running locally. Choose the one that best fits your experience level.
+
+#### Option A: The Non-Technical Pathway (For Managers & Product Teams)
+If you just want to run this application locally without fiddling with code, follow these simple steps:
+
+**Step 1: Get the Prerequisites**
+* Download and install [Java 17+](https://adoptium.net/) (The engine for the backend).
+* Download and install [Node.js](https://nodejs.org/) (The engine for the frontend).
 
 **Step 2: Start the Backend (The Kitchen)**
-Open your terminal (Command Prompt/Terminal), navigate to the `BackEnd-Part` folder, and start the core microservices in this specific order using Maven (`./mvnw spring-boot:run`):
-1. `eureka` (Start the directory first)
-2. `configserver` (Start the configuration next)
-3. `gateway` (Start the Maitre D' next)
-4. Finally, start the `userservice`, `activityservice`, and `aiservice`.
+Open your terminal (Command Prompt or Terminal on Mac). We need to start the microservices in a specific order:
+1. **Navigate to the core folder:** `cd "BackEnd-Part"`
+2. **Start Service Registry:** Open a new terminal tab, navigate to `BackEnd-Part/eureka` and run `./mvnw spring-boot:run` (or `mvnw.cmd spring-boot:run` on Windows). Wait for it to say "Started".
+3. **Start Config Server:** Open a new terminal tab, navigate to `BackEnd-Part/configserver` and run `./mvnw spring-boot:run`.
+4. **Start API Gateway:** Open a new terminal tab, navigate to `BackEnd-Part/gateway` and run `./mvnw spring-boot:run`.
+5. **Start Domain Services:** Finally, in three separate terminal tabs, do the same (`./mvnw spring-boot:run`) for `userservice`, `activityservice`, and `aiservice`.
 
 **Step 3: Start the Frontend (The Dining Area)**
-Open a *new* terminal window, navigate to the `FrontEnd Part` directory, and type:
-1. `npm install` (This downloads all the paint and decorations for the website).
-2. `npm run dev` (This turns the website on).
-3. Open your browser and go to the link it provides (usually `http://localhost:5173`). You are now running the full enterprise suite!
+1. Open a *new* terminal window, navigate to the `FrontEnd Part` directory: `cd "FrontEnd Part"`
+2. Type `npm install` and hit Enter (This downloads all the visual assets for the website).
+3. Type `npm run dev` and hit Enter (This turns the website on).
+4. **View the App:** Open your browser and go to `http://localhost:5173`. You are now running the full enterprise suite!
+
+#### Option B: The Technical Pathway (For Developers)
+For engineers, we recommend running the services directly through your IDE.
+
+**1. Backend Compilation & Run**
+* Clone the repository and open the `BackEnd-Part` directory in **IntelliJ IDEA Ultimate** or **Eclipse**.
+* Ensure your JDK is set to **Java 17**.
+* Use the **Run Dashboard** or **Services Tool Window** to boot the services sequentially:
+  1. `EurekaApplication` (Port 8761)
+  2. `ConfigServerApplication` (Port 8888)
+  3. `GatewayApplication` (Port 8080)
+  4. `UserServiceApplication` (Port dynamic/random)
+  5. `ActivityServiceApplication` (Port dynamic/random)
+  6. `AiServiceApplication` (Port dynamic/random)
+* *Note: The Gateway runs on `localhost:8080` and uses Eureka to dynamically route `/users/**` and `/activities/**` traffic to the randomly assigned ports of the microservices.*
+
+**2. Frontend Initialization**
+* Navigate to `FrontEnd Part`.
+* Ensure Node `v18+` is active.
+* Run `npm install` followed by `npm run dev`.
+* The Vite server will map API requests over to the Gateway on `8080` automatically via proxy configurations.
+
+**3. Verifying the Platform**
+Check the Eureka Dashboard at `http://localhost:8761` in your browser. You should see all 6 services registered under "Instances currently registered with Eureka".
 
 ---
 
