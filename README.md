@@ -137,7 +137,7 @@ We have provided two pathways to get FitCalorie running locally. Choose the one 
 If you just want to run this application locally without fiddling with code, follow these simple steps:
 
 **Step 1: Get the Prerequisites**
-* Download and install [Java 17+](https://adoptium.net/) (The engine for the backend).
+* Download and install [Java 17+](https://www.jetbrains.com/idea/) (The engine for the backend).
 * Download and install [Node.js](https://nodejs.org/) (The engine for the frontend).
 
 **Step 2: Start the Backend (The Kitchen)**
