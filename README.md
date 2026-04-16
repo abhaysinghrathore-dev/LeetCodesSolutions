@@ -1,6 +1,7 @@
 # 🥗 FitCalorie Platform
 > **[▶️ Watch the End-to-End System Demo Video Here](https://drive.google.com/file/d/1MPk7XfQpv471ddZGppfOSTFR6fdJSLuY/view?usp=sharing)**
-> *Note: Click the link above to watch a detailed visual breakdown of the application in action.*
+
+>  *Note: Click the link above to watch a detailed visual breakdown of the application in action.*
 
 Welcome to the **FitCalorie Microservices Platform**, an enterprise-grade fitness and health-tracking ecosystem. This repository is not just a collection of code—it’s a carefully structured orchestration of services designed to seamlessly manage user activity, profile data, and AI-driven health evaluations. 
 
